@@ -42,3 +42,6 @@ def train_model(X_train, y_train, X_test, y_test, epochs=10, batch_size=32):
 
     # save the model
     torch.save(model.state_dict(), 'results/trained_model.pth')
+
+    # return labels and predictions for visualization
+    return y_test, predicted

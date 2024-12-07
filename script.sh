@@ -16,14 +16,18 @@ unzip GeneratedLabelledFlows.zip
 unzip MachineLearningCSV.zip
 rm -rf GeneratedLabelledFlows.zip
 rm -rf MachineLearningCSV.zip
-cd ..
-mkdir pcap
-cd pcap
-wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Monday-WorkingHours.pcap
-wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Tuesday-WorkingHours.pcap
-wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Wednesday-workingHours.pcap
-wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Thursday-WorkingHours.pcap
-wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Friday-WorkingHours.pcap
+
+# uncomment the following lines if wanting to train on pcap files as well
+
+# cd ..
+# mkdir pcap
+# cd pcap
+# wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Monday-WorkingHours.pcap
+# wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Tuesday-WorkingHours.pcap
+# wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Wednesday-workingHours.pcap
+# wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Thursday-WorkingHours.pcap
+# wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/PCAPs/Friday-WorkingHours.pcap
+
 cd ..
 cd ..
 
@@ -33,4 +37,4 @@ cd /usr/local/cuda-12.1/lib64
 sudo rm -f libcudnn*
 cd /usr/local/cuda-12.1/include
 sudo rm -f cudnn*
-cd ~/TechtonicActivity/
+cd ~/Snifford/
