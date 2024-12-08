@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
@@ -16,12 +17,22 @@ def load_and_preprocess_data(dataset_folder):
         file_path = os.path.join(dataset_folder, csv_file)
         df = pd.read_csv(file_path)
 
-        # replace empty values with mean of the column
-        df.fillna(df.mean(), inplace=True)
+        # get rid of leading/trailing whitespace in column names
+        df.columns = df.columns.str.strip()
+
+        # Assuming your labels are in a column called 'Label'
+        df['Label'] = df['Label'].apply(lambda x: 0 if x == 'Benign' else 1)
+
 
         # extract features and labels
         X = df.drop(columns=['Label'])
         y = df['Label']
+        
+        # handle infinity and nan values by replacing with 0
+        if X.isin([np.inf, -np.inf]).any().any():
+            print("Warning: inf/very large values found - replacing with 0.")
+            X.replace([np.inf, -np.inf], np.nan, inplace=True)
+        df.fillna(0, inplace=True)
 
         # encode labels into numbers
         label_encoder = LabelEncoder()

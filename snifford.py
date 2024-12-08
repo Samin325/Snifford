@@ -5,11 +5,11 @@ from src.utils import plot_confusion_matrix
 data_folder = 'data/csv/MachineLearningCVE'
 
 # load and preprocess data
-data = load_and_preprocess_data(dataset_folder)
+data = load_and_preprocess_data(data_folder)
 X_train, X_test, y_train, y_test = split_data(data)
 
 # train and evaluate model
-train_model(X_train, y_train, X_test, y_test)
+y_test, y_pred = train_model(X_train, y_train, X_test, y_test)
 
 # visualize  confusion matrix
 classes = ['Benign', 'Malicious'] 
