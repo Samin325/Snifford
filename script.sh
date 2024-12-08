@@ -1,7 +1,7 @@
 # set up virutal environment
 python3 -m venv env
 source env/bin/activate
-pip3 install torch torchvision torchaudio
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install obspy pandas scikit-learn
 pip install -r requirements.txt 
 
@@ -10,7 +10,7 @@ mkdir data
 cd data
 mkdir csv
 cd csv
-wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/CSVs/GeneratedLabelledFlows.zip
+# wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/CSVs/GeneratedLabelledFlows.zip
 wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/CSVs/MachineLearningCSV.zip
 unzip GeneratedLabelledFlows.zip
 unzip MachineLearningCSV.zip
