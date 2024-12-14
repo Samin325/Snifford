@@ -1,3 +1,6 @@
+# This script was used on a a Deep Learning VM on GCP with the PyTorch 2.3 (CUDA 12.1, Python 3.10) framework
+# https://console.cloud.google.com/marketplace/details/click-to-deploy-images/deeplearning
+
 # set up virutal environment
 python3 -m venv env
 source env/bin/activate
@@ -31,7 +34,7 @@ rm -rf MachineLearningCSV.zip
 cd ..
 cd ..
 
-# fix for error: 
+# the following lines are a fix for an error faced: 
 # https://discuss.pytorch.org/t/could-not-load-library-libcudnn-cnn-train-so-8-but-im-sure-that-i-have-set-the-right-ld-library-path/190277/2
 cd /usr/local/cuda-12.1/lib64
 sudo rm -f libcudnn*
