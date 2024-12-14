@@ -19,15 +19,12 @@ def load_and_preprocess_data(dataset_folder):
 
         # get rid of leading/trailing whitespace in column names
         df.columns = df.columns.str.strip()
-
-        # Assuming your labels are in a column called 'Label'
         df['Label'] = df['Label'].apply(lambda x: 0 if x == 'Benign' else 1)
-
 
         # extract features and labels
         X = df.drop(columns=['Label'])
         y = df['Label']
-        
+
         # handle infinity and nan values by replacing with 0
         if X.isin([np.inf, -np.inf]).any().any():
             print("Warning: inf/very large values found - replacing with 0.")

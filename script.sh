@@ -11,10 +11,10 @@ cd data
 mkdir csv
 cd csv
 # wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/CSVs/GeneratedLabelledFlows.zip
+# unzip GeneratedLabelledFlows.zip
+# rm -rf GeneratedLabelledFlows.zip
 wget http://205.174.165.80/CICDataset/CIC-IDS-2017/Dataset/CIC-IDS-2017/CSVs/MachineLearningCSV.zip
-unzip GeneratedLabelledFlows.zip
 unzip MachineLearningCSV.zip
-rm -rf GeneratedLabelledFlows.zip
 rm -rf MachineLearningCSV.zip
 
 # uncomment the following lines if wanting to train on pcap files as well
