@@ -19,3 +19,31 @@ def plot_confusion_matrix(y_true, y_pred, classes=None):
     plt.xlabel('Predicted label')
     plt.title('Confusion Matrix')
     plt.show()
+
+def plot_confusion_matrix_terminal(y_true, y_pred, classes=None):
+    if classes:
+        class_labels = classes
+    else:
+        class_labels = ["Benign", "Malicious"]
+
+    # get confusion matrix
+    cm = confusion_matrix(y_true, y_pred)
+
+    # if matrix is 2x2, print out formatted
+    if cm.shape == (2, 2):
+        tn, fp, fn, tp = cm.ravel()
+
+        print("\nConfusion Matrix:")
+        print(f"{'':<20}{'Predicted Benign':<20}{'Predicted Malicious':<20}")
+        print(f"{'Actually Benign':<20}{tn:<20}{fp:<20}")
+        print(f"{'Actually Malicious':<20}{fn:<20}{tp:<20}")
+
+        print("\nDetailed Breakdown:")
+        print(f"True Negatives (Benign correctly classified as Benign): {tn}")
+        print(f"False Positives (Benign misclassified as Malicious): {fp}")
+        print(f"False Negatives (Malicious misclassified as Benign): {fn}")
+        print(f"True Positives (Malicious correctly classified as Malicious): {tp}")
+    else:
+        print("\nConfusion Matrix (raw):")
+        print(cm)
+

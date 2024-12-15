@@ -1,6 +1,7 @@
 from src.data_loader import load_and_preprocess_data, split_data
 from src.train import train_model
 from src.utils import plot_confusion_matrix
+from src.utils import plot_confusion_matrix_terminal
 import numpy as np
 
 data_folder = 'data/csv/MachineLearningCVE'
@@ -15,4 +16,4 @@ y_pred = np.array(y_pred).flatten()
 
 # visualize  confusion matrix
 classes = ['Benign', 'Malicious'] 
-plot_confusion_matrix(y_test, y_pred, classes)
+plot_confusion_matrix_terminal(y_test, y_pred, classes)
