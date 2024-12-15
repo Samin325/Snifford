@@ -21,7 +21,7 @@ def load_and_preprocess_data(dataset_folder):
         df.columns = df.columns.str.strip()
 
         # change labels so the classifications are binary
-        df['Label'] = df['Label'].apply(lambda x: 0 if x == 'Benign' else 1)
+        df['Label'] = df['Label'].apply(lambda x: 0 if x == 'BENIGN' else 1)
 
         # extract features and labels
         X = df.drop(columns=['Label'])
@@ -29,7 +29,6 @@ def load_and_preprocess_data(dataset_folder):
 
         # handle infinity and nan values by replacing with mean
         if X.isin([np.inf, -np.inf]).any().any():
-            print("warning: inf/nan values found - replacing with mean")
             X.replace([np.inf, -np.inf], np.nan, inplace=True)
         X.fillna(X.mean(), inplace=True)
 

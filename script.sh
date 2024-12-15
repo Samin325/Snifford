@@ -9,6 +9,7 @@ pip install obspy pandas scikit-learn
 pip install -r requirements.txt 
 
 # download and extract data
+mkdir results
 mkdir data
 cd data
 mkdir csv
