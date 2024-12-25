@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
 
-def plot_confusion_matrix(y_true, y_pred, classes=None):
 
+def plot_confusion_matrix(y_true, y_pred, classes=None):
     # map numeric labels to class names if provided
     if classes and set(y_true).issubset({0, 1}):
         labels = [0, 1]
@@ -19,6 +19,7 @@ def plot_confusion_matrix(y_true, y_pred, classes=None):
     plt.xlabel('Predicted label')
     plt.title('Confusion Matrix')
     plt.show()
+
 
 def plot_confusion_matrix_terminal(y_true, y_pred, classes=None):
     if classes:
@@ -46,4 +47,3 @@ def plot_confusion_matrix_terminal(y_true, y_pred, classes=None):
     else:
         print("\nConfusion Matrix (raw):")
         print(cm)
-

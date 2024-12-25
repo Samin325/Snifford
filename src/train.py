@@ -1,9 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from src.SniffNet import IDSModel
 from sklearn.metrics import accuracy_score
-from tqdm import tqdm 
+from tqdm import tqdm
+
+from src.SniffNet import IDSModel
+
 
 def train_model(X_train, y_train, X_test, y_test, epochs=10, batch_size=32):
     model = IDSModel()
@@ -20,14 +22,15 @@ def train_model(X_train, y_train, X_test, y_test, epochs=10, batch_size=32):
     for epoch in range(epochs):
         model.train()
 
-        epoch_loss = 0 
-        total_samples = 0 # keeps track of actual number of data points processed to acurately calculate average
-        batch_progress = tqdm(range(0, len(X_train), batch_size), desc=f'Epoch {epoch+1}/{epochs}', unit='minibatch')
+        epoch_loss = 0
+        total_samples = 0  # keeps track of actual number of data points processed to accurately calculate average
+        batch_progress = tqdm(range(0, len(X_train), batch_size), desc=f'Epoch {epoch + 1}/{epochs}', unit='minibatch')
 
         # shuffle data and create minibatches
         for i in batch_progress:
-            minibatch_X = X_train_tensor[i:i+batch_size]
-            minibatch_y = y_train_tensor[i:i+batch_size].unsqueeze(1) # ensure target labels are of shape (batch_size, 1)
+            minibatch_X = X_train_tensor[i:i + batch_size]
+            minibatch_y = y_train_tensor[i:i + batch_size].unsqueeze(
+                1)  # ensure target labels are of shape (batch_size, 1)
 
             # backpropagation
             optimizer.zero_grad()
@@ -42,8 +45,8 @@ def train_model(X_train, y_train, X_test, y_test, epochs=10, batch_size=32):
             batch_progress.set_postfix(loss=epoch_loss / total_samples)
             batch_progress.update(batch_size)
 
-        batch_progress.close() 
-        print(f'Epoch {epoch+1}/{epochs}, Loss: {epoch_loss / total_samples:.4f}')
+        batch_progress.close()
+        print(f'Epoch {epoch + 1}/{epochs}, Loss: {epoch_loss / total_samples:.4f}')
 
     # evaluate the model on the test set
     model.eval()
@@ -51,7 +54,7 @@ def train_model(X_train, y_train, X_test, y_test, epochs=10, batch_size=32):
         output = model(X_test_tensor)
         predicted = (torch.sigmoid(output) > 0.5).float()
         y_pred = predicted.cpu().numpy()  # move to CPU and convert to NumPy
-        accuracy = accuracy_score(y_test, y_pred) 
+        accuracy = accuracy_score(y_test, y_pred)
         print(f'Accuracy on test set: {accuracy * 100:.2f}%')
 
     # save the model
