@@ -1,4 +1,5 @@
 import os
+import pickle
 
 import numpy as np
 import pandas as pd
@@ -6,12 +7,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 
-def load_and_preprocess_data(dataset_folder):
+def load_and_preprocess_data(dataset_folder, processed_data_path):
     """
     Loads and preprocesses the data
 
     Assumes data is found in a folder, is in csv format, and has same columns across files
     """
+    if os.path.exists(processed_data_path):
+        with open(processed_data_path, 'rb') as f:
+            data = pickle.load(f)
+        return data
+
     csv_files = [f for f in os.listdir(dataset_folder) if f.endswith('.csv')]
     data = {}
 
@@ -39,6 +45,9 @@ def load_and_preprocess_data(dataset_folder):
         X_scaled = scaler.fit_transform(X)
 
         data[csv_file] = (X_scaled, y.values)
+
+    with open(processed_data_path, 'wb') as f:
+        pickle.dump(data, f)
 
     return data
 
