@@ -6,7 +6,7 @@ from src.utils import plot_confusion_matrix_terminal
 
 data_folder = 'data/csv/MachineLearningCVE'
 processed_data_path = 'data/ids_dataset1.pkl'
-model_path = 'results/initial_model.pth'
+model_path = 'results/BaseModel.pth'
 
 # load and preprocess data
 data = load_and_preprocess_data(data_folder, processed_data_path)

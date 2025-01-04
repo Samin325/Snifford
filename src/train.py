@@ -6,11 +6,11 @@ import torch.optim as optim
 from sklearn.metrics import accuracy_score
 from tqdm import tqdm
 
-from src.SniffNet import IDSModel
+from src.SniffNet import BaseModel, LSTMModel
 
 
 def train_model(X_train, y_train, X_test, y_test, model_path, epochs=10, batch_size=32):
-    model = IDSModel()
+    model = BaseModel()
     criterion = nn.BCEWithLogitsLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
