@@ -7,9 +7,13 @@ source env/bin/activate
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install obspy pandas scikit-learn
 pip install -r requirements.txt 
+pip install gdown
 
 # download and extract data
 mkdir results
+cd results
+gdown https://drive.google.com/file/d/1zBrTbLao3Wu5nbB-B-qFfb-mqsWEhKcg/view?usp=drive_link
+cd ..
 mkdir data
 cd data
 mkdir csv
