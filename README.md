@@ -11,3 +11,8 @@ Confusion Matrix:
 | --------------------- | ------------------ | -------------------- |
 | Actually Benign       | 427659             | 27000                |
 | Actually Malicious    | 2099               | 109394               |
+
+The following is a rudimentary example of Sniffords ability to detect malicious traffic - an alert is generated when it flags something as malicious and then all the extracted features of the network traffic are printed to the terminal:
+![image](https://github.com/user-attachments/assets/639d98bc-aebc-489d-b7dd-3a957ba0a63b)
+
+This will be cleaned up to produce human-readable alerts on a graphical user interface
